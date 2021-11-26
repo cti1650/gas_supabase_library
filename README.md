@@ -1,15 +1,15 @@
-# Yahoo Search Crawling Library
+# GAS Supabase Library
 
 ## このツールについて
 
-このツールは Yahoo 検索から情報を取得して自分自身にメール送信するために作成したライブラリです！
+このツールは GAS で Supabase の情報を操作するために作成したライブラリです！
 
 ## 使用方法
 
 ### スクリプト ID
 
 ```
-1EZpEBW7RavtpwLvGYAwsHqiBw6-5iz74JxkEwTYbDeqEFY_d0VmI_h-k
+1IpnXIjS7EmbjIlHWt5zUo-qEA5OzuRfq2Y_pqRvqsUkL3wmFTGktvsLW
 ```
 
 導入方法に関しては以下のサイトがわかりやすいです！
@@ -19,14 +19,16 @@
 ### ライブラリの使い方
 
 以下のスクリプトを作成し実行することで、
-Yahoo 検索結果を実行したユーザーのメールアドレス宛に送付できます。
+Supabase のテーブル情報を取得できます。
 
 ```
-function testFunc(){
-  YahooSearchCrawlingLibrary.mail({
-    'title':'React.js関連情報',
-    'itemList':YahooSearchCrawlingLibrary.search('React.js OR Next.js'),
-  });
+function getSupabaseData (){
+  const SUPABASE_URL = "{{URL}}";
+  const SUPABASE_KEY = "{{KEY}}";
+  const {readRecords} = supabase(SUPABASE_URL,SUPABASE_KEY);
+  Logger.log(readRecords('/table_name?select=*',{
+    'Range': '0-9'
+  }))
 }
 ```
 
@@ -59,7 +61,7 @@ clasp login
 ### GAS のスクリプトをローカルにクローン
 
 ```
-clasp clone 1EZpEBW7RavtpwLvGYAwsHqiBw6-5iz74JxkEwTYbDeqEFY_d0VmI_h-k
+clasp clone 1IpnXIjS7EmbjIlHWt5zUo-qEA5OzuRfq2Y_pqRvqsUkL3wmFTGktvsLW
 ```
 
 ### ダウンロード
